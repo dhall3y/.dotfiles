@@ -1,0 +1,38 @@
+set nu
+set scrolloff=10
+set showmode
+map <space> <nop>
+let mapleader="\<space>"
+set clipboard+=unnamed
+
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set gdefault
+set relativenumber
+nmap <leader>ng :noh<CR>
+
+set ideajoin
+set ideamarks
+set ideastatusicon=gray
+
+imap jl <Esc>
+
+nmap <C-i> <Action>(Back)
+nmap <C-o> <Action>(Forward)
+
+nmap K <Action>(ShowHoverInfo)
+
+nmap gf <Action>(GotoFile)
+nmap gd <Action>(GotoDeclaration)
+nmap gD <Action>(GotoTypeDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap gI <Action>(QuickImplementations)
+
+Plug 'machakann/vim-highlightedyank'
+
+set highlightedyank
+let g:highlightedyank_highlight_duration = "150"
+let g:highlightedyank_highlight_color = "rgba(57, 197, 187, 155)"
+
