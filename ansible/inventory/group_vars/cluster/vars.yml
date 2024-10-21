@@ -1,0 +1,3 @@
+ansible_become_password: "{{ vault_ansible_become_password }}"
+ansible_user: "{{ vault_ansible_user }}"
+ansible_port: "{{ vault_ansible_port }}"
