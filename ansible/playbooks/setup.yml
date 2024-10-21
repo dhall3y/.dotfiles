@@ -3,3 +3,4 @@
 
   roles:
     - system_update
+    - zsh
