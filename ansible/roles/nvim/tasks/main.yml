@@ -1,0 +1,41 @@
+---
+- name: install build dependencies
+  apt:
+    name:
+      - gettext
+  become: true
+
+- name: clone neovim repo
+  ansible.builtin.git:
+    repo: https://github.com/neovim/neovim.git
+    dest: /tmp/neovim
+    depth: 1
+    version: stable
+
+- name: neovim make install
+  ansible.builtin.command: sudo make install
+  args:
+    chdir: "/tmp/neovim"
+  become: true
+
+- name: check if neovim is installed correctly
+  command: nvim --version
+  register: nvim_version_check
+  failed_when: nvim_version_check.rc != 0
+  ignore_errors: false
+
+- name: debug
+  debug:
+    msg: "neovim version: {{ nvim_version_check.stdout }}"
+
+- name: remove the /tmp/neovim
+  file:
+    path: /tmp/neovim
+    state: absent
+  become: true
+
+- name: remove build dependencies
+  apt:
+    name: gettext
+    state: absent
+  become: true
