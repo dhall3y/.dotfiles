@@ -1,41 +1,33 @@
 ---
-- name: install build dependencies
-  apt:
-    name:
-      - gettext
+- name: Ensure /usr/local/bin directory exists
+  ansible.builtin.file:
+    path: /usr/local/bin
+    state: directory
+    mode: '0755'
   become: true
 
-- name: clone neovim repo
-  ansible.builtin.git:
-    repo: https://github.com/neovim/neovim.git
-    dest: /tmp/neovim
-    depth: 1
-    version: stable
+- name: Download neovim prebuilt binary
+  ansible.builtin.get_url:
+    url: "https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
+    dest: "/tmp/nvim-linux64.tar.gz"
+    mode: '0644'
 
-- name: neovim make install
-  ansible.builtin.command: sudo make install
-  args:
-    chdir: "/tmp/neovim"
+- name: Extract neovim binary
+  ansible.builtin.unarchive:
+    src: "/tmp/nvim-linux64.tar.gz"
+    dest: "/opt/"
+    remote_src: true
   become: true
 
-- name: check if neovim is installed correctly
-  command: nvim --version
-  register: nvim_version_check
-  failed_when: nvim_version_check.rc != 0
-  ignore_errors: false
-
-- name: debug
-  debug:
-    msg: "neovim version: {{ nvim_version_check.stdout }}"
-
-- name: remove the /tmp/neovim
-  file:
-    path: /tmp/neovim
-    state: absent
+- name: Create symlink from /usr/local/bin/nvim to /opt/nvim-linux64/bin/nvim
+  ansible.builtin.file:
+    src: /opt/nvim-linux64/bin/nvim
+    dest: /usr/local/bin/nvim
+    state: link
   become: true
 
-- name: remove build dependencies
-  apt:
-    name: gettext
+- name: Clean up temporary files
+  ansible.builtin.file:
+    path: "/tmp/nvim-linux64*"
     state: absent
   become: true
