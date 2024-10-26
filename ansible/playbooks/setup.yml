@@ -2,7 +2,8 @@
 - hosts: cluster
 
   roles:
-    - system_update
-    - zsh
-    - utils
+    #- system_update
+    - system_config
+    #- zsh
+    #- utils
     - nvim

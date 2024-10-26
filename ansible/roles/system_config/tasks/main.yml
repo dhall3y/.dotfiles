@@ -1,0 +1,5 @@
+---
+- name: Create .config if it does not exist
+  ansible.builtin.file:
+    path: ~/.config/
+    state: directory

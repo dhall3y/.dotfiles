@@ -6,6 +6,9 @@
       - unzip
       - tree
       - wget
+      - tar
+      - gzip
+      - curl 
   become: true
 
 - name: make sure build essentials are present
