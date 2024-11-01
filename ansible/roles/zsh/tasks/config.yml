@@ -1,0 +1,28 @@
+---
+- name: Check if .zshrc exists
+  stat:
+    path: ~/.zshenv
+  register: zshenv_file
+
+- name: Check if .config/zsh exists
+  stat:
+    path: ~/.config/zsh/
+  register: zshconfig
+
+- name: Backup existing .zshenv if it exists
+  command: mv ~/.zshenv ~/.zshenv_old
+  when: zshenv_file.stat.exists
+
+- name: Backup existing zsh config if it exists
+  command: mv ~/.config/zsh/ ~/.config/zsh_old/
+  when: zshconfig.stat.exists
+
+- name: Copy new .zshenv to user home directory
+  copy:
+    src: .zshenv
+    dest: ~/.zshenv
+
+- name: Copy new zshconfig to user home directory
+  copy:
+    src: zsh/
+    dest: ~/.config/zsh/
