@@ -9,3 +9,5 @@
     name: "{{ ansible_user }}"
     shell: "/usr/bin/zsh"
   become: true
+
+- import_tasks: config.yml
