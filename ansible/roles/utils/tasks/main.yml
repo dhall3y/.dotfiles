@@ -9,6 +9,7 @@
       - tar
       - gzip
       - curl 
+      - gpg
   become: true
 
 - name: make sure build essentials are present

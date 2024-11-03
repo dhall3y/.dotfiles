@@ -3,7 +3,9 @@
 
   roles:
     #- system_update
-    - system_config
+    #- system_config
     #- zsh
     #- utils
-    - nvim
+    #- nvim
+    #- nodejs
+    - kitty

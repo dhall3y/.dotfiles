@@ -8,7 +8,7 @@
     dest: ~/.zshenv
     backup: yes
 
-- name: copy config directory if different
+- name: copy zsh config directory if different
   ansible.builtin.copy:
     src: zsh/
     dest: ~/.config/zsh/
