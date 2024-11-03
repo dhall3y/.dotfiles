@@ -1,0 +1,13 @@
+---
+- name: Install nvm
+  ansible.builtin.shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+  args:
+    creates: "$HOME/.nvm/nvm.sh"
+
+#- name : Install node
+#  ansible.builtin.shell:
+#    /home/ubuntu/.nvm/nvm.sh install node
+#  become_user: ubuntu
+#  become: true
+
