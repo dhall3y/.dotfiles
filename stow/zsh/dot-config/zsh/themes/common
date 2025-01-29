@@ -1,0 +1,88 @@
+# Prompt symbol
+COMMON_PROMPT_SYMBOL="❯"
+
+# Colors
+COMMON_COLORS_HOST_ME="green"
+COMMON_COLORS_HOST_AWS_VAULT="yellow"
+COMMON_COLORS_CURRENT_DIR="blue"
+COMMON_COLORS_RETURN_STATUS_TRUE="magenta"
+COMMON_COLORS_RETURN_STATUS_FALSE="yellow"
+COMMON_COLORS_GIT_STATUS_DEFAULT="green"
+COMMON_COLORS_GIT_STATUS_STAGED="red"
+COMMON_COLORS_GIT_STATUS_UNSTAGED="yellow"
+COMMON_COLORS_GIT_PROMPT_SHA="green"
+COMMON_COLORS_BG_JOBS="yellow"
+
+# Enable redrawing of prompt variables
+setopt promptsubst
+
+# Function to get host information
+common_host() {
+  local me=""
+  if [[ -n $SSH_CONNECTION ]]; then
+    me="%n@%m"
+  elif [[ $LOGNAME != $USER ]]; then
+    me="%n"
+  fi
+
+  if [[ -n $me ]]; then
+    echo "%{$fg[$COMMON_COLORS_HOST_ME]%}$me%{$reset_color%}:"
+  fi
+
+  if [[ -n $AWS_VAULT ]]; then
+    echo "%{$fg[$COMMON_COLORS_HOST_AWS_VAULT]%}$AWS_VAULT%{$reset_color%} "
+  fi
+}
+
+# Function to get current directory
+common_current_dir() {
+  echo -n "%{$fg[$COMMON_COLORS_CURRENT_DIR]%}%c "
+}
+
+# Function to show return status
+common_return_status() {
+  echo -n "%(?.%F{$COMMON_COLORS_RETURN_STATUS_TRUE}.%F{$COMMON_COLORS_RETURN_STATUS_FALSE})$COMMON_PROMPT_SYMBOL%f "
+}
+
+# Function to get Git status
+common_git_status() {
+  local message=""
+  local message_color="%F{$COMMON_COLORS_GIT_STATUS_DEFAULT}"
+
+  # Check staged and unstaged changes
+  local staged=$(git status --porcelain 2>/dev/null | grep -e "^[MADRCU]")
+  local unstaged=$(git status --porcelain 2>/dev/null | grep -e "^[MADRCU? ][MADRCU?]")
+
+  if [[ -n ${staged} ]]; then
+    message_color="%F{$COMMON_COLORS_GIT_STATUS_STAGED}"
+  elif [[ -n ${unstaged} ]]; then
+    message_color="%F{$COMMON_COLORS_GIT_STATUS_UNSTAGED}"
+  fi
+
+  local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+  if [[ -n ${branch} ]]; then
+    message+="${message_color}${branch}%f"
+  fi
+
+  echo -n "${message}"
+}
+
+# Function to show background jobs
+common_bg_jobs() {
+  echo -n "%{$fg[$COMMON_COLORS_BG_JOBS]%}%(1j.↓%j .)"
+}
+
+#short sha
+git_prompt_short_sha() {
+  local SHA
+  SHA=$(git rev-parse --short HEAD 2> /dev/null) \
+    && echo "$ZSH_THEME_GIT_PROMPT_SHA_BEFORE$SHA$ZSH_THEME_GIT_PROMPT_SHA_AFTER"
+}
+
+ZSH_THEME_GIT_PROMPT_SHA_BEFORE="%{%F{$COMMON_COLORS_GIT_PROMPT_SHA}%}"
+ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$reset_color%}"
+
+# Set the prompt
+PROMPT='$(common_host)$(common_current_dir)$(common_bg_jobs)$(common_return_status)'
+#RPROMPT='$(common_git_status)'
+RPROMPT='$(common_git_status) $(git_prompt_short_sha)'
