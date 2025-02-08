@@ -1,5 +1,0 @@
-- name: Clone into into ~/.config/nvim
-  ansible.builtin.git:
-    repo: "https://github.com/dhall3y/kickstart.nvim.git"
-    dest: "~/.config/nvim"
-    update: yes        

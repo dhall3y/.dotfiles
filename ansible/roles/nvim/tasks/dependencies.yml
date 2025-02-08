@@ -1,8 +1,0 @@
----
-- name: Install neovim dependencies
-  apt:
-    name:
-      - ripgrep
-      - xclip
-    state: present
-  become: true
