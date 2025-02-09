@@ -10,11 +10,5 @@ export SAVEHIST=10000
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
 
-alias vi='nvim'
-alias vim='nvim'
-export EDITOR=vim
-export GIT_EDITOR=vim
-export VISUAL=vim
-
 export PATH=$PATH:$HOME/.local/bin
 export epitech="$HOME/code/epitech"

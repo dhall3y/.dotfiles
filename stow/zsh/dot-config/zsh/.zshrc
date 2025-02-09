@@ -40,9 +40,11 @@ source <(fzf --zsh)
 fpath=($ZDOTDIR/themes/ $fpath)
 autoload -Uz common; common
 
-#TODO: duplicate in .zshenv
-alias vim=nvim
-alias vi=nvim
+alias vi='nvim'
+alias vim='nvim'
+export EDITOR='nvim'
+export GIT_EDITOR='nvim'
+export VISUAL='nvim'
 
 #linux
 alias ls='ls --color=auto'
