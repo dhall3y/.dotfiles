@@ -15,7 +15,9 @@ return {
 		sources = {
 			-- compat = {},
 			default = { "lsp", "path", "snippets", "buffer" },
-			cmdline = {},
+		},
+		cmdline = {
+			enabled = false,
 		},
 	},
 }
