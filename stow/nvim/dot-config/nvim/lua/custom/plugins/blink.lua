@@ -5,8 +5,7 @@ return {
 	version = "*",
 	opts = {
 		keymap = {
-			preset = "enter",
-			["<C-y>"] = { "select_and_accept" },
+			preset = "default",
 		},
 		appearance = {
 			use_nvim_cmp_as_default = false,
