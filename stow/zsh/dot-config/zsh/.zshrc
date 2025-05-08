@@ -2,7 +2,13 @@ source $ZDOTDIR/themes/theme-and-appearance.zsh
 source $ZDOTDIR/themes/grep.zsh
 
 #load completion
-autoload -U compinit && compinit
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+autoload -Uz compinit
+for dump in $ZDOTDIR/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu select
@@ -54,9 +60,7 @@ alias ls='ls --color=auto'
 #alias diff='diff --color'
 #export LS_COLORS="di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+autoload -U compinit; compinit
 
 #append command to history
 setopt inc_append_history

@@ -6,3 +6,5 @@ gtk-titlebar = false
 #window-padding-x = 0
 #window-padding-y = 0
 #macos-titlebar-style = transparent
+clipboard-read = allow
+clipboard-write = allow

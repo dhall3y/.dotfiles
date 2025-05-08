@@ -12,3 +12,4 @@ setopt HIST_FIND_NO_DUPS
 
 export PATH=$PATH:$HOME/.local/bin
 export epitech="$HOME/code/epitech"
+export TERMINAL=/usr/bin/ghostty
