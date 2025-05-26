@@ -12,6 +12,8 @@ vim.schedule(function()
 	vim.opt.clipboard = "unnamedplus"
 end)
 
+vim.opt.colorcolumn = { 120 }
+
 -- Enable break indent
 vim.opt.breakindent = true
 

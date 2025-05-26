@@ -49,6 +49,11 @@ require("lazy").setup({
 	require("custom.plugins.telescope"),
 
 	require("custom.plugins.harpoon"),
+
+	{
+		"lervag/vimtex",
+		lazy = false,
+	},
 }, {
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {
