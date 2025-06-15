@@ -1,0 +1,48 @@
+{
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "catppuccin-mocha",
+    "workbench.startupEditor": "none",
+    "editor.minimap.enabled": false,
+    "workbench.sideBar.location": "right",
+    "editor.fontFamily": "Comic Code",
+    "editor.fontSize": 14,
+    "editor.fontWeight": "normal",
+    "window.zoomLevel": 1,
+    "breadcrumbs.enabled": false,
+    "vim.cursorStylePerMode.insert": "block",
+    "editor.scrollbar.verticalScrollbarSize": 0,
+    "editor.lineNumbers": "relative",
+    "vim.insertModeKeyBindings": [
+        {
+          "before": ["j", "l"],
+          "after": ["<Esc>"]
+        },
+        {
+            "before": ["<C-y>"],
+            "commands": ["acceptSelectedSuggestion"],
+            "silent": true,
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "s", "f"],
+            "commands": ["workbench.action.quickOpen"],
+            "silent": true,
+        },
+        {
+          "before": ["u"],
+          "commands": ["undo"]
+        },
+        {
+          "before": ["c-r"],
+          "commands": ["redo"]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.highlightedyank.enable": true,
+    "vim.useSystemClipboard": true,
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+    "security.workspace.trust.enabled": false,
+}
