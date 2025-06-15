@@ -50,10 +50,7 @@ require("lazy").setup({
 
 	require("custom.plugins.harpoon"),
 
-	{
-		"lervag/vimtex",
-		lazy = false,
-	},
+	require("custom.plugins.vimtex"),
 }, {
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {
