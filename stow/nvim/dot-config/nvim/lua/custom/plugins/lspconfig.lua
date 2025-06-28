@@ -165,8 +165,8 @@ return {
 				},
 			})
 
-			local capabilities = require("blink.cmp").get_lsp_capabilities()
-
+			---@type MasonLspconfigSettings
+			---@diagnostic disable-next-line: missing-fields
 			-- Enable the following language servers
 			local servers = {
 				-- clangd = {},
@@ -198,17 +198,12 @@ return {
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
+			for server_name, config in pairs(servers) do
+				vim.lsp.config(server_name, config)
+			end
+
 			require("mason-lspconfig").setup({
-				ensure_installed = {},
-				automatic_installation = false,
 				automatic_enable = true,
-				handlers = {
-					function(server_name)
-						local server = servers[server_name] or {}
-						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
-					end,
-				},
 			})
 		end,
 	},
