@@ -1,6 +1,8 @@
 font-family = "Comic Code Ligatures"
 font-size = 13
-theme = catppuccin-mocha
+#theme = catppuccin-mocha
+#theme = xcodedarkhc
+theme = Oxocarbon
 window-padding-balance = true
 gtk-titlebar = false
 #window-padding-x = 0

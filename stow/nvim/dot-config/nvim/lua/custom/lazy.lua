@@ -25,10 +25,14 @@ require("lazy").setup({
 	require("custom.plugins.blink"),
 
 	{
-		"catppuccin/nvim",
+		-- "catppuccin/nvim",
+		-- "arzg/vim-colors-xcode",
+		"nyoom-engineering/oxocarbon.nvim",
 		priority = 1000,
 		init = function()
-			vim.cmd.colorscheme("catppuccin-mocha")
+			-- vim.cmd.colorscheme("catppuccin-mocha")
+			-- vim.cmd.colorscheme("xcodedarkhc")
+			vim.cmd.colorscheme("oxocarbon")
 
 			vim.cmd.hi("Comment gui=none")
 		end,
