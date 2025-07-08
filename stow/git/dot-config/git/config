@@ -1,0 +1,14 @@
+[user]
+	name = dhall3y
+	email = dhalley@disroot.org
+	signingKey = ~/.ssh/main-27042025.pub
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[core]
+	editor = nvim
+	safecrlf = true
+	
