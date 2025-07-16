@@ -13,3 +13,8 @@ setopt HIST_FIND_NO_DUPS
 export PATH=$PATH:$HOME/.local/bin
 export epitech="$HOME/code/epitech"
 export TERMINAL=/usr/bin/ghostty
+
+# esp-idf specific
+export IDF_PATH="$HOME/esp/esp-idf"
+export MENUCONFIG_STYLE="monochrome"
+

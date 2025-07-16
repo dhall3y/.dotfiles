@@ -165,6 +165,12 @@ return {
 				},
 			})
 
+			local clangd = "clangd"
+
+			if os.getenv("IDF_PATH") then
+				clangd = vim.fn.expand("$HOME/.espressif/tools/esp-clang/16.0.1-fe4f10a809/esp-clang/bin/clangd")
+			end
+
 			---@type MasonLspconfigSettings
 			---@diagnostic disable-next-line: missing-fields
 			-- Enable the following language servers
@@ -175,6 +181,24 @@ return {
 				-- rust_analyzer = {},
 				-- ts_ls = {},
 				--
+				clangd = {
+					cmd = {
+						clangd,
+						"--clang-tidy",
+						"--all-scopes-completion",
+						"--completion-style=detailed",
+						"--header-insertion=iwyu",
+						"--pch-storage=disk",
+						"--log=error",
+						"--j=5",
+						"--background-index",
+						"--function-arg-placeholders",
+						"--fallback-style=llvm",
+					},
+					init_options = {
+						compilationDatabasePath = "./build",
+					},
+				},
 
 				lua_ls = {
 					-- cmd = { ... },
