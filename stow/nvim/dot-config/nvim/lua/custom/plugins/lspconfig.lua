@@ -199,6 +199,30 @@ return {
 						compilationDatabasePath = "./build",
 					},
 				},
+				ts_ls = {
+					settings = {
+						typescript = {
+							format = {
+								indentSize = 2,
+								tabSize = 2,
+								convertTabsToSpaces = true,
+								insertSpaceAfterCommaDelimiter = true,
+								insertSpaceAfterConstructor = true,
+								indentStyle = "Smart", -- or "Block"
+							},
+						},
+						javascript = {
+							format = {
+								indentSize = 2,
+								tabSize = 2,
+								convertTabsToSpaces = true,
+								insertSpaceAfterCommaDelimiter = true,
+								insertSpaceAfterConstructor = true,
+								indentStyle = "Smart",
+							},
+						},
+					},
+				},
 
 				lua_ls = {
 					-- cmd = { ... },
