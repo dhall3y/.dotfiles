@@ -5,9 +5,10 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 -- Exit terminal mode in the builtin terminal
-vim.keymap.set("t", "jl", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+-- vim.keymap.set("t", "jl", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-vim.keymap.set("i", "jl", "<Esc>")
+-- vim.keymap.set("i", "jl", "<Esc>")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",

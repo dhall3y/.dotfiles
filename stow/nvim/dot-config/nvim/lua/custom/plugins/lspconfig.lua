@@ -181,6 +181,7 @@ return {
 				-- rust_analyzer = {},
 				-- ts_ls = {},
 				--
+				terraformls = {},
 				clangd = {
 					cmd = {
 						clangd,
@@ -256,6 +257,7 @@ return {
 								["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
 								["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*{docker-compose,compose}*.{yml,yaml}",
 								["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
+								["https://raw.githubusercontent.com/canonical/cloud-init/main/cloudinit/config/schemas/versions.schema.cloud-config.json"] = "*user-data*.{yml, yaml}",
 							},
 							format = { enable = true },
 							completion = true,
@@ -266,6 +268,12 @@ return {
 				},
 			}
 
+			---@type MasonLspconfigSettings
+			---@diagnostic disable-next-line: missing-fields
+			require("mason-lspconfig").setup({
+				automatic_enable = vim.tbl_keys(servers or {}),
+			})
+
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
@@ -275,10 +283,6 @@ return {
 			for server_name, config in pairs(servers) do
 				vim.lsp.config(server_name, config)
 			end
-
-			require("mason-lspconfig").setup({
-				automatic_enable = true,
-			})
 		end,
 	},
 }
