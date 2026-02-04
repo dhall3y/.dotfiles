@@ -24,6 +24,12 @@ bindkey -s ^f "tmux-sessionizer\n"
 # Enable backward selection with Shift+Tab
 bindkey '^[[Z' reverse-menu-complete
 
+# Edit the current command line in $VISUAL (or $EDITOR / `vi` if not set)
+autoload -U edit-command-line
+
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
 # Start typing + [Down-Arrow] - fuzzy find history backward
 autoload -U down-line-or-beginning-search
 zle -N down-line-or-beginning-search
