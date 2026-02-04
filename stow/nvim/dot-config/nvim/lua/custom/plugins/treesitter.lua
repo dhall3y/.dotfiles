@@ -1,10 +1,8 @@
 return {
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		main = "nvim-treesitter.configs", -- Sets main module to use for opts
-		opts = {
-			ensure_installed = {
+		config = function()
+			local filetypes = {
 				"bash",
 				"c",
 				"diff",
@@ -16,16 +14,15 @@ return {
 				"query",
 				"vim",
 				"vimdoc",
-			},
-			ignore_install = { "latex" },
-			auto_install = true,
-			highlight = {
-				enable = true,
-				additional_vim_regex_highlighting = { "ruby" },
-				disable = { "latex" },
-			},
-			indent = { enable = true, disable = { "ruby", "latex" } },
-		},
+			}
+			require("nvim-treesitter").install(filetypes)
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = filetypes,
+				callback = function()
+					vim.treesitter.start()
+				end,
+			})
+		end,
 	},
 }
 -- vim: ts=2 sts=2 sw=2 et
