@@ -28,8 +28,10 @@ require("lazy").setup({
 		-- "catppuccin/nvim",
 		-- "arzg/vim-colors-xcode",
 		"nyoom-engineering/oxocarbon.nvim",
+		-- "V4N1LLA-1CE/xcodedark.nvim",
 		priority = 1000,
 		init = function()
+			-- vim.cmd.colorscheme("xcodedark")
 			-- vim.cmd.colorscheme("catppuccin-mocha")
 			-- vim.cmd.colorscheme("xcodedarkhc")
 			vim.cmd.colorscheme("oxocarbon")
@@ -45,6 +47,14 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
 	},
+
+	--{
+	--	"FabijanZulj/blame.nvim",
+	--	lazy = false,
+	--	config = function()
+	--		require("blame").setup({})
+	--	end,
+	--},
 
 	require("custom.plugins.mini"),
 

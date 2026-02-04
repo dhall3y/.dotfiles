@@ -134,8 +134,8 @@ return {
 					settings = {
 						typescript = {
 							format = {
-								indentSize = 2,
-								tabSize = 2,
+								indentSize = 4,
+								tabSize = 4,
 								convertTabsToSpaces = true,
 								insertSpaceAfterCommaDelimiter = true,
 								insertSpaceAfterConstructor = true,
@@ -144,8 +144,8 @@ return {
 						},
 						javascript = {
 							format = {
-								indentSize = 2,
-								tabSize = 2,
+								indentSize = 4,
+								tabSize = 4,
 								convertTabsToSpaces = true,
 								insertSpaceAfterCommaDelimiter = true,
 								insertSpaceAfterConstructor = true,

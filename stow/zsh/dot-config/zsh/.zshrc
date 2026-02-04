@@ -46,6 +46,7 @@ bindkey -M emacs "^[[A" up-line-or-beginning-search
 #fpath=($ZDOTDIR/plugins/zsh-completions/src/ $fpath)
 
 # fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source <(fzf --zsh)
 
 #theme
@@ -83,3 +84,7 @@ unsetopt flowcontrol
 setopt auto_menu         # show completion menu on successive tab press
 setopt complete_in_word
 setopt always_to_end
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

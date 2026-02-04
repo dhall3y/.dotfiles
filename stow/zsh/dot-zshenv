@@ -10,9 +10,15 @@ export SAVEHIST=10000
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
 
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export PATH="$PATH:/snap/bin"
+export PATH="$PATH:$HOME/.emacs.d/bin"
+export PATH=$PATH:$XDG_CONFIG_HOME/nvm/
+
 export PATH=$PATH:$HOME/.local/bin
 export epitech="$HOME/code/epitech"
 export TERMINAL=/usr/bin/ghostty
+export SDKMAN_DIR="$HOME/.sdkman"
 
 # esp-idf specific
 export IDF_PATH="$HOME/esp/esp-idf"
