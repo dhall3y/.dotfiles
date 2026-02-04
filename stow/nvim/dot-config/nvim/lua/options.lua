@@ -53,4 +53,7 @@ vim.opt.scrolloff = 10
 -- Remove mouse
 vim.opt.mouse = ""
 
+-- don't know if necessary will remove later if it isn't
+vim.opt.termguicolors = true
+
 -- vim: ts=2 sts=2 sw=2 et
