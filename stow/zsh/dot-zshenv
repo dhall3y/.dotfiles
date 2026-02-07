@@ -24,3 +24,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export IDF_PATH="$HOME/esp/esp-idf"
 export MENUCONFIG_STYLE="monochrome"
 
+export PATH=$PATH:/opt/glab/bin
+export PATH=$PATH:$HOME/.local/bin
+
+export WIN="/mnt/c/Users/david.bosse/"
