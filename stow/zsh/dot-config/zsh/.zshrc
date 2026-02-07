@@ -57,6 +57,7 @@ alias vim='nvim'
 export EDITOR='nvim'
 export GIT_EDITOR='nvim'
 export VISUAL='nvim'
+alias sudo='sudo ' # expand alias when using sudo
 
 #linux
 alias ls='ls --color=auto'
